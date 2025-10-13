@@ -1,0 +1,21 @@
+# Ambiente virtual
+venv/
+.env/
+
+# Banco local
+db.sqlite3
+
+# Cache e arquivos temporários
+__pycache__/
+*.pyc
+
+# Configurações do sistema
+*.DS_Store
+
+# Arquivos de IDE
+.vscode/
+.idea/
+
+# Arquivos de migração (opcional)
+*/migrations/__pycache__/
+

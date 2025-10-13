@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Eventos Disponíveis - SGEA{% endblock %}
+
+{% block content %}
+<div class="eventos-container">
+    <h2>Eventos Disponíveis</h2>
+
+    {% for evento in eventos %}
+    <div class="evento-item">
+        <div class="evento-info">
+            <strong>{{ evento.nome }}</strong>
+            <span>— {{ evento.tipo }} ({{ evento.data_inicial|date:"M. d, Y" }})</span>
+        </div>
+        <form method="POST" action="{% url 'inscrever_evento' evento.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn-inscrever">Inscrever-se</button>
+        </form>
+    </div>
+    {% empty %}
+    <p>Nenhum evento disponível no momento.</p>
+    {% endfor %}
+
+    <a href="{% url 'criar_evento' %}" class="novo-evento-btn">Novo Evento</a>
+</div>
+{% endblock %}

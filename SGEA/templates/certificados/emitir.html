@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Emitir Certificado - SGEA{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Emitir Certificado</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="usuario">Usuário:</label>
+        <input type="text" id="usuario" name="usuario" required>
+
+        <label for="evento">Evento:</label>
+        <input type="text" id="evento" name="evento" required>
+
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" required>
+
+        <button type="submit">Emitir</button>
+    </form>
+    <a href="{% url 'listar_certificados' %}" class="btn-link">Voltar</a>
+</div>
+{% endblock %}

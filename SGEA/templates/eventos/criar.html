@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Novo Evento - SGEA{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Criar Novo Evento</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar Evento</button>
+    </form>
+    <a href="{% url 'listar_eventos' %}" class="btn-link">Voltar</a>
+</div>
+{% endblock %}

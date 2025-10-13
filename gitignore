@@ -1,0 +1,42 @@
+# Ambiente virtual
+venv/
+.env/
+
+# Banco de dados local
+db.sqlite3
+
+# Arquivos compilados do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Arquivos temporários e de cache
+*.log
+*.pot
+*.mo
+
+# Configurações e chaves locais
+*.env
+.envrc
+
+# Arquivos de sistema macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Arquivos de IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Migrations cache
+*/migrations/__pycache__/
+
+# Arquivos estáticos gerados
+staticfiles/
+media/
+
+# Outras pastas ocultas
+__MACOSX/

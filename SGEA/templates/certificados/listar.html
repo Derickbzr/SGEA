@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Certificados Emitidos - SGEA{% endblock %}
+
+{% block content %}
+<div class="eventos-container">
+    <h2>Certificados Emitidos</h2>
+
+    {% if certificados %}
+        <table class="table-certificados">
+            <thead>
+                <tr>
+                    <th>Usuário</th>
+                    <th>Evento</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cert in certificados %}
+                <tr>
+                    <td>{{ cert.usuario }}</td>
+                    <td>{{ cert.evento }}</td>
+                    <td>{{ cert.data }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nenhum certificado emitido ainda.</p>
+    {% endif %}
+
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 25px;">
+        <a href="{% url 'emitir_certificado' %}" class="certificados-btn">Emitir Novo Certificado</a>
+        <a href="{% url 'home' %}" class="btn-link">Voltar para a Home</a>  <!-- 🔹 novo botão -->
+    </div>
+</div>
+{% endblock %}

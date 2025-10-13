@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}SGEA{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>SGEA - Sistema de Gestão de Eventos Acadêmicos</h1>
+    </header>
+
+    <main class="main-container">
+        {% block content %}
+        <!-- Conteúdo das páginas -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Sistema de Gestão de Eventos Acadêmicos</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,325 @@
+/* ===== Estilo global ===== */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #ffffff; /* fundo branco */
+    color: #222;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Cabeçalho ===== */
+header {
+    background-color: #003366; /* azul escuro institucional */
+    color: white;
+    padding: 20px 0;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+/* ===== Links e botões ===== */
+a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #0066cc;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 6px;
+    margin: 10px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #004c99; /* azul mais escuro no hover */
+}
+
+/* ===== Rodapé ===== */
+footer {
+    background-color: #f4f4f4;
+    color: #555;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+/* ===== Container principal ===== */
+.main-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ====== FORMULÁRIOS (LOGIN / CADASTRO) ====== */
+.form-container {
+    max-width: 420px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #003366;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: #0066cc;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #004c99;
+}
+
+/* ===== Requisitos de senha ===== */
+.helptext, .errorlist, ul {
+    font-size: 12px;
+    color: #555;
+    margin: 5px 0 10px 0;
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.errorlist {
+    color: red;
+}
+
+a.btn-link {
+    display: inline-block;
+    text-align: center;
+    background-color: #003366;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+a.btn-link:hover {
+    background-color: #0055aa;
+}
+/* ====== FORMULÁRIOS DE LOGIN ====== */
+.login-container {
+    max-width: 360px;            /* 🔹 reduz a largura */
+    margin: 80px auto;           /* 🔹 centraliza vertical/horizontal */
+    background-color: #ffffff;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;          /* 🔹 centraliza o conteúdo */
+}
+
+.login-container h2 {
+    color: #003366;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+.login-container form {
+    text-align: left;
+}
+
+.login-container label {
+    display: block;
+    font-weight: 600;
+    color: #003366;
+    margin-top: 12px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 8px 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.login-container button[type="submit"] {
+    width: 100%;
+    background-color: #2866cc;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button[type="submit"]:hover {
+    background-color: #004c99;
+}
+
+.login-container .btn-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    background-color: #003366;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-container .btn-link:hover {
+    background-color: #0055aa;
+}
+/* ====== LISTAGEM DE EVENTOS ====== */
+.eventos-container {
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.evento-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px 25px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.evento-item strong {
+    font-size: 17px;
+    color: #003366;
+}
+
+.evento-item span {
+    font-size: 15px;
+    color: #555;
+    margin-left: 5px;
+}
+
+.btn-inscrever {
+    background-color: #2866cc;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    font-size: 13px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-inscrever:hover {
+    background-color: #004c99;
+}
+
+.novo-evento-btn {
+    display: inline-block;
+    background-color: #003366;
+    color: white;
+    padding: 12px 25px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 25px;
+}
+
+.novo-evento-btn:hover {
+    background-color: #0055aa;
+}
+/* ====== TABELA DE CERTIFICADOS ====== */
+.table-certificados {
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto;
+    border-collapse: collapse;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.table-certificados th {
+    background-color: #003366;
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    font-size: 15px;
+}
+
+.table-certificados td {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.table-certificados tr:nth-child(even) {
+    background-color: #f7f9fc;
+}
+
+.table-certificados tr:hover {
+    background-color: #e8f0ff;
+    transition: background-color 0.3s ease;
+}
+
+.table-certificados caption {
+    font-weight: 600;
+    color: #003366;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+/* ===== BOTÃO PADRÃO PARA A TELA ===== */
+.certificados-btn {
+    display: inline-block;
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin-top: 25px;
+}
+
+.certificados-btn:hover {
+    background-color: #0055aa;
+}
+
