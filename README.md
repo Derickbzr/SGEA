@@ -181,10 +181,10 @@ Acesse:
 
 ## 👨‍💻 **Autor**
 
-**Thiago Leite**  
+**Derick Bezerra**  
 📍 Projeto desenvolvido para disciplina de **Desenvolvimento Web com Django**  
 📅 Faculdade — 2025  
-💬 Contato: *[adicione seu e-mail institucional ou GitHub]*  
+💬 Contato: *[derick.bezerra@sempreceub.com]*  
 
 ---
 
