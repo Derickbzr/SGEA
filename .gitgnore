@@ -19,3 +19,4 @@ __pycache__/
 # Arquivos de migração (opcional)
 */migrations/__pycache__/
 
+.env
