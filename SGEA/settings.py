@@ -148,15 +148,16 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # ============================================
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS") == "True"
 
 # Trocar pelo email real
-EMAIL_HOST_USER = "derickbezerra@gmail.com"
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+
 
 # App Password do Gmail (não use sua senha comum)
-EMAIL_HOST_PASSWORD = "kcym hexr mcdt qgpn"
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
