@@ -1,198 +1,169 @@
-# 🎓 **SGEA – Sistema de Gestão de Eventos Acadêmicos**
+# 🎓 SGEA – Sistema de Gestão de Eventos Acadêmicos
 
-![Python](https://img.shields.io/badge/Python-3.13-blue.svg)
-![Django](https://img.shields.io/badge/Django-5.2-success.svg)
-![License](https://img.shields.io/badge/license-Educational-lightgrey.svg)
-![Status](https://img.shields.io/badge/status-Em%20Desenvolvimento-yellow.svg)
+O **SGEA** é um sistema web desenvolvido em **Django 5**, voltado para instituições acadêmicas que desejam organizar eventos, controlar inscrições e emitir certificados automaticamente.  
+O projeto implementa fluxo completo com autenticação, perfis de usuário, CRUD de eventos e API REST com autenticação por token.
 
 ---
 
-## 🧠 **Descrição do Projeto**
+## 📦 Tecnologias utilizadas
 
-O **SGEA (Sistema de Gestão de Eventos Acadêmicos)** é uma aplicação web desenvolvida em **Python + Django** para o gerenciamento de **eventos acadêmicos** como palestras, seminários, minicursos e semanas universitárias.
-
-O sistema foi criado com foco em **boas práticas de desenvolvimento (MVC, segurança, modularidade)** e permite que alunos, professores e organizadores **interajam em um ambiente unificado**.
-
----
-
-## 🚀 **Funcionalidades**
-
-✅ **Usuários (Autenticação e Perfis)**
-- Cadastro e login de usuários.  
-- Perfis distintos: **Aluno**, **Professor** e **Organizador**.  
-- Validação de campos obrigatórios (nome, telefone, instituição, login e senha).
-
-🎟️ **Eventos**
-- Criação, listagem e inscrição em eventos.  
-- Somente organizadores podem criar novos eventos.  
-- Exibição de eventos com layout institucional (tema azul e branco).
-
-🧾 **Certificados**
-- Emissão e listagem de certificados vinculados a usuários inscritos.  
-- Somente organizadores podem emitir certificados.  
-- Tabelas responsivas e visual limpo.
-
-🔐 **Autenticação**
-- Login seguro e senhas com hash.
-- Controle de permissões por perfil.
-- Logout e redirecionamento seguro.
+- **Python 3.12+**
+- **Django 5**
+- **SQLite**
+- **Django Rest Framework**
+- **HTML + CSS (Design customizado)**
+- **SMTP Gmail para envio de e-mails**
+- **Pillow (para upload de imagens)**
 
 ---
 
-## 🏗️ **Estrutura do Projeto**
+## 🚀 Como executar o projeto
 
-```
-SGEA/
-│
-├── manage.py
-├── db.sqlite3
-│
-├── SGEA/                   # Configurações principais (settings, urls, wsgi)
-│
-├── usuarios/               # App de autenticação e perfis
-│   ├── models.py
-│   ├── views.py
-│   ├── urls.py
-│   ├── forms.py
-│   └── templates/usuarios/
-│       ├── login.html
-│       └── cadastro.html
-│
-├── eventos/                # App de gerenciamento de eventos
-│   ├── models.py
-│   ├── views.py
-│   ├── urls.py
-│   └── templates/eventos/
-│       ├── listar.html
-│       └── novo.html
-│
-├── certificados/           # App de certificados
-│   ├── views.py
-│   ├── urls.py
-│   └── templates/certificados/
-│       ├── listar.html
-│       └── emitir.html
-│
-├── templates/              # Templates globais
-│   ├── base.html
-│   └── home.html
-│
-└── static/                 # Arquivos estáticos (CSS)
-    └── css/
-        └── style.css
-```
+### 1️⃣ Clonar o repositório
 
----
-
-## 🛠️ **Tecnologias Utilizadas**
-
-| Tecnologia | Descrição |
-|-------------|------------|
-| **Python 3.13** | Linguagem principal |
-| **Django 5.2** | Framework web MVC |
-| **SQLite3** | Banco de dados padrão |
-| **HTML5 / CSS3** | Estrutura e estilização |
-| **Bootstrap-like CSS** | Tema customizado (branco e azul institucional) |
-
----
-
-## ⚙️ **Instalação e Execução**
-
-### 🔹 Clonar o repositório
 ```bash
-git clone https://github.com/seu-usuario/SGEA.git
-cd SGEA
-```
-
-### 🔹 Criar o ambiente virtual
-```bash
-python3 -m venv venv
-source venv/bin/activate  # macOS/Linux
-venv\Scripts\activate     # Windows
-```
-
-### 🔹 Instalar as dependências
-```bash
-pip install django
-```
-
-### 🔹 Aplicar migrações
-```bash
+git clone https://github.com/seu-repo/sgea.git
+cd sgea
+2️⃣ Criar ambiente virtual
+bash
+Copiar código
+python -m venv venv
+# Windows
+venv\Scripts\activate
+# Linux/Mac
+source venv/bin/activate
+3️⃣ Instalar dependências
+bash
+Copiar código
+pip install -r requirements.txt
+4️⃣ Aplicar migrações
+bash
+Copiar código
 python manage.py migrate
-```
-
-### 🔹 Criar superusuário
-```bash
+5️⃣ Criar superusuário (opcional)
+bash
+Copiar código
 python manage.py createsuperuser
-```
-
-### 🔹 Executar o servidor
-```bash
+6️⃣ Executar servidor
+bash
+Copiar código
 python manage.py runserver
-```
+Acesse:
+👉 http://127.0.0.1:8000/
 
-Acesse:  
-👉 [http://127.0.0.1:8000](http://127.0.0.1:8000)
+🔐 Perfis de Usuário
+O sistema possui dois perfis principais:
 
----
+Perfil	Permissões
+Aluno	Visualiza eventos, inscreve, cancela inscrição
+Organizador	Cria eventos, exclui eventos, administra inscrições
 
-## 👨‍🏫 **Perfis de Usuário**
+O perfil é configurado no cadastro do usuário.
 
-| Perfil | Permissões |
-|--------|-------------|
-| 🧑‍🎓 **Aluno** | Pode se inscrever em eventos e visualizar certificados. |
-| 👩‍🏫 **Professor** | Pode se inscrever e visualizar eventos. |
-| 🧑‍💼 **Organizador** | Pode criar eventos e emitir certificados. |
+📑 Funcionalidades Principais
+✔ Cadastro e Login
+Criar conta com nome, e-mail, senha e perfil.
 
----
+Login seguro com autenticação nativa do Django.
 
-## 💡 **Principais Rotas**
+✔ Listagem de Eventos
+Exibe:
 
-| URL | Descrição |
-|-----|------------|
-| `/` | Página inicial |
-| `/usuarios/login/` | Login |
-| `/usuarios/cadastro/` | Cadastro |
-| `/eventos/` | Listar eventos |
-| `/eventos/novo/` | Criar novo evento |
-| `/certificados/` | Listar certificados |
-| `/certificados/emitir/` | Emitir novo certificado |
+Nome, tipo, local, horário
 
----
+Vagas totais
 
-## 📘 **Boas Práticas e Arquitetura**
+Inscritos
 
-- Estrutura modular em múltiplos apps Django.  
-- Uso do modelo de usuário customizado (`AbstractUser`).  
-- Senhas criptografadas.  
-- Templates e estáticos organizados.  
-- Layout responsivo com CSS customizado.  
+Status da inscrição do usuário
 
----
+Banner do evento (se enviado)
 
-## 📈 **Próximas Melhorias**
+✔ Inscrição em Evento
+Quando o aluno se inscreve:
 
-- Geração de certificados em PDF.  
-- Envio de certificados por e-mail.  
-- Filtro de certificados por usuário autenticado.  
-- Dashboard de estatísticas para organizadores.
+Sistema valida vagas
 
----
+Evita inscrição duplicada
 
-## 👨‍💻 **Autor**
+Registra no banco
 
-**Derick Bezerra**  
-📍 Projeto desenvolvido para disciplina de **Desenvolvimento Web com Django**  
-📅 Faculdade — 2025  
-💬 Contato: *[derick.bezerra@sempreceub.com]*  
+Envia certificado por e-mail (versão simples)
 
----
+✔ Cancelamento de Inscrição
+Botão exclusivo para usuários inscritos.
 
-## 🧩 **Licença**
+✔ Criar Evento (Organizadores)
+Campos:
 
-Este projeto é de uso **educacional** e pode ser utilizado para fins acadêmicos.  
-Sinta-se à vontade para modificar e expandir.
+Nome
 
----
+Tipo
 
-> 💡 *“A tecnologia só faz sentido quando ajuda a conectar conhecimento e pessoas.”*
+Datas
+
+Horário
+
+Local
+
+Vagas
+
+Banner
+
+Validações:
+
+Data inicial não pode ser no passado
+
+Data final deve ser após a inicial
+
+Vagas devem ser > 0
+
+✔ Excluir Evento (Organizadores)
+Um botão "Excluir" aparece apenas para quem é organizador daquele evento.
+
+🧱 Estrutura do Projeto
+arduino
+Copiar código
+SGEA/
+│── eventos/
+│── inscricoes/
+│── usuarios/
+│── certificados/
+│── SGEA/
+│── static/
+│     └── css/style.css
+│── media/
+│     └── banners/
+│── templates/
+│── manage.py
+│── db.sqlite3
+📬 Envio de E-mails (Certificados)
+Configuração feita em settings.py:
+
+python
+Copiar código
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "seuemail@gmail.com"
+EMAIL_HOST_PASSWORD = "senha_de_app"
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+⚠ Importante: deve ser usada senha de app do Gmail.
+
+🌐 API REST
+O projeto implementa uma API com token authentication:
+
+GET /api/eventos/
+Lista eventos.
+
+POST /api/eventos/inscrever/<id>/
+Inscreve usuário autenticado.
+
+POST /api/eventos/cancelar/<id>/
+Cancela inscrição.
+
+Autenticação
+http
+Copiar código
+Authorization: Token seu_token_aqui
