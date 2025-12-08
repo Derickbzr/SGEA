@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_LEVEL = messages.ERROR  # ignora INFO e SUCCESS
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,6 +45,8 @@ INSTALLED_APPS = [
     'eventos',
     'inscricoes',
     'certificados',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +58,16 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework.authentication.TokenAuthentication"],
+    "DEFAULT_THROTTLE_CLASSES": [
+        "rest_framework.throttling.UserRateThrottle"
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "consulta_eventos": "20/day",
+        "inscricao_eventos": "50/day",
+    }
+}
 
 ROOT_URLCONF = 'SGEA.urls'
 
@@ -125,10 +141,34 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'SGEA'/ "static",
 ]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
+# ============================================
+# CONFIGURAÇÕES DE E-MAIL (ENVIO DE CONFIRMAÇÃO)
+# ============================================
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+# Trocar pelo email real
+EMAIL_HOST_USER = "derickbezerra@gmail.com"
+
+# App Password do Gmail (não use sua senha comum)
+EMAIL_HOST_PASSWORD = "kcym hexr mcdt qgpn"
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'usuarios.Usuario'
+
+LOGIN_URL = '/usuarios/login/'
+LOGOUT_URL = '/usuarios/logout/'
+LOGIN_REDIRECT_URL = '/eventos/'

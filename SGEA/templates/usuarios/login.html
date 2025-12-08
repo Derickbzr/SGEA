@@ -1,15 +1,23 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block title %}Login - SGEA{% endblock %}
+
+{% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="login-container">
-    <h2>Entrar</h2>
+<h2 class="page-title">Entrar no Sistema</h2>
+
+<div class="form-card">
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Entrar</button>
+
+
+        <button class="btn-inscrever" type="submit">Entrar</button>
     </form>
-    <a href="{% url 'cadastro' %}" class="btn-link">Ainda não tem conta? Cadastre-se</a>
+
+    <p class="text-center">
+        Não possui conta?
+        <a href="/usuarios/cadastro/">Cadastre-se</a>
+    </p>
 </div>
 {% endblock %}

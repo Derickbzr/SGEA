@@ -1,26 +1,58 @@
 {% extends 'base.html' %}
-
-{% block title %}Eventos Disponíveis - SGEA{% endblock %}
+{% load static %}
 
 {% block content %}
+
 <div class="eventos-container">
-    <h2>Eventos Disponíveis</h2>
+
+    {% if user.perfil == "ORGANIZADOR" %}
+        <div style="text-align: right; margin-bottom: 20px;">
+            <a href="{% url 'criar_evento' %}"
+               class="btn-inscrever"
+               style="
+                   background:#0d6efd;
+                   padding:10px 20px;
+                   color:white;
+                   text-decoration:none;
+                   border-radius:6px;
+                   font-weight:bold;
+               ">
+                + Criar Evento
+            </a>
+        </div>
+    {% endif %}
 
     {% for evento in eventos %}
-    <div class="evento-item">
-        <div class="evento-info">
-            <strong>{{ evento.nome }}</strong>
-            <span>— {{ evento.tipo }} ({{ evento.data_inicial|date:"M. d, Y" }})</span>
+        <div class="card-evento">
+            <h2>{{ evento.nome }}</h2>
+
+            <p>Vagas: {{ evento.vagas }} | Inscritos: {{ evento.inscricao_set.count }}</p>
+
+            {% if evento.id in inscricoes_ids %}
+                <p class="texto-inscrito">Você já está inscrito</p>
+
+                <form method="POST" action="{% url 'cancelar_inscricao' evento.id %}">
+                    {% csrf_token %}
+                    <button class="btn-cancelar">Cancelar inscrição</button>
+                </form>
+
+            {% else %}
+                <form method="POST" action="{% url 'inscrever_evento' evento.id %}">
+                    {% csrf_token %}
+                    <button class="btn-inscrever">Inscrever</button>
+                </form>
+            {% endif %}
+            {% if user.perfil == "ORGANIZADOR" %}
+                <form method="POST" action="{% url 'excluir_evento' evento.id %}">
+                {% csrf_token %}
+                <button class="btn-excluir" onclick="return confirm('Tem certeza que deseja excluir este evento?')">
+                        Excluir Evento
+    </button>
+</form>
+{% endif %}
         </div>
-        <form method="POST" action="{% url 'inscrever_evento' evento.id %}">
-            {% csrf_token %}
-            <button type="submit" class="btn-inscrever">Inscrever-se</button>
-        </form>
-    </div>
-    {% empty %}
-    <p>Nenhum evento disponível no momento.</p>
     {% endfor %}
 
-    <a href="{% url 'criar_evento' %}" class="novo-evento-btn">Novo Evento</a>
 </div>
+
 {% endblock %}

@@ -1,24 +1,42 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}SGEA{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
-    <header>
-        <h1>SGEA - Sistema de Gestão de Eventos Acadêmicos</h1>
-    </header>
 
-    <main class="main-container">
-        {% block content %}
-        <!-- Conteúdo das páginas -->
-        {% endblock %}
-    </main>
+<header class="header">
+    <div class="logo">SGEA • Sistema de Gestão de Eventos Acadêmicos</div>
 
-    <footer>
-        <p>&copy; 2025 - Sistema de Gestão de Eventos Acadêmicos</p>
-    </footer>
+    <nav >
+    <a href="/eventos/">Eventos</a>
+
+    {% if user.is_authenticated %}
+        <a href="/usuarios/logout/" >SAIR </a>
+    {% else %}
+        <a href="/usuarios/login/">ENTRAR </a>
+    {% endif %}
+</nav>
+</header>
+
+<div class="container">
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% block content %}{% endblock %}
+</div>
+
 </body>
 </html>
