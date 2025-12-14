@@ -18,7 +18,7 @@ def inscrever(request, evento_id):
 
     if created:
         print("INSCRIÇÃO REALIZADA →", request.user.username, evento.nome)
-        enviar_certificado(request.user, evento)
+        # enviar_certificado(request.user, evento)
     else:
         print("USUÁRIO JÁ INSCRITO →", request.user.username, evento.nome)
 

@@ -5,14 +5,16 @@
 {% block content %}
     {% if user.is_authenticated %}
         <p>Bem-vindo, {{ user.first_name|default:user.username }}!</p>
-        <a href="{% url 'listar_eventos' %}">Ver Eventos</a>
-        <a href="{% url 'listar_certificados' %}" class="btn-link">Ver Certificados</a>
 
-        <a href="{% url 'logout' %}">Sair</a>
+<!--        <a href="{% url 'listar_eventos' %}" class="btn-primary home-btn">Ver Eventos</a>-->
+<!--        <a href="{% url 'listar_certificados' %}" class="btn-primary home-btn">Ver Certificados</a>-->
+
+        {# Botão de sair removido conforme pedido #}
 
     {% else %}
         <p>Bem-vindo! Acesse o sistema para participar dos eventos acadêmicos.</p>
-        <a href="{% url 'login' %}">Entrar</a>
-        <a href="{% url 'cadastro' %}">Cadastrar-se</a>
+
+        <a href="{% url 'login' %}" class="btn-primary home-btn">Entrar</a>
+        <a href="{% url 'cadastro' %}" class="btn-primary home-btn">Cadastrar-se</a>
     {% endif %}
 {% endblock %}
