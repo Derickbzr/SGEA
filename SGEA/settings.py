@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'eventos',
     'inscricoes',
     'certificados',
+    'logs',
     'rest_framework',
     'rest_framework.authtoken',
 ]
@@ -61,11 +62,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework.authentication.TokenAuthentication"],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication"
+    ],
     "DEFAULT_THROTTLE_CLASSES": [
         "rest_framework.throttling.UserRateThrottle"
     ],
     "DEFAULT_THROTTLE_RATES": {
+        "user": "100/day",              # 👈 OBRIGATÓRIO
         "consulta_eventos": "20/day",
         "inscricao_eventos": "50/day",
     }

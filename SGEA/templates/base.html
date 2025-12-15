@@ -12,13 +12,14 @@
 <body>
 
 <header class="header">
-    <div class="logo">SGEA • Sistema de Gestão de Eventos Acadêmicos</div>
+    <div class="logo">SGEA • </div>
 
     <nav>
         <a href="/eventos/">Eventos</a>
 
         {% if user.is_authenticated %}
             <a href="/certificados/">Certificados</a>   <!-- 🔥 BOTÃO NOVO AQUI -->
+            <a href="/historico/">Histórico</a>
 
             <a href="/usuarios/logout/">SAIR</a>
         {% else %}

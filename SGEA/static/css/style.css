@@ -383,3 +383,24 @@ h1, h2, h3, .logo {
     background: #007bff;
     color: white;
 }
+.log-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.log-table th {
+    background: #0d6efd;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.log-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.log-table tr:hover {
+    background: #f1f5ff;
+}

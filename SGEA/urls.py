@@ -13,6 +13,7 @@ urlpatterns = [
     path('usuarios/', include('usuarios.urls')),
     path('eventos/', include('eventos.urls')),
     path('inscricoes/', include('inscricoes.urls')),
+    path("historico/", include("logs.urls")),
     path('certificados/', include('certificados.urls')),
     path("api/", include("api.urls")),
 ]

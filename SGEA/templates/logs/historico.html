@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Histórico de Ações{% endblock %}
+
+{% block content %}
+<h2>Histórico de Ações</h2>
+
+{% if logs %}
+<table class="log-table">
+    <thead>
+        <tr>
+            <th>Ação</th>
+            <th>Detalhes</th>
+            <th>Data</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.acao }}</td>
+            <td>{{ log.detalhes|default:"—" }}</td>
+            <td>{{ log.data|date:"d/m/Y H:i" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+<p>Nenhuma ação registrada.</p>
+{% endif %}
+{% endblock %}

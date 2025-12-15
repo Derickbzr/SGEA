@@ -3,6 +3,7 @@ from django.shortcuts import redirect, get_object_or_404
 from eventos.models import Evento
 from .models import Inscricao
 from certificados.utils import enviar_certificado
+from logs.utils import registrar_acao
 
 @login_required
 def inscrever(request, evento_id):
@@ -15,6 +16,7 @@ def inscrever(request, evento_id):
         return redirect('listar_eventos')
 
     inscricao, created = Inscricao.objects.get_or_create(usuario=request.user, evento=evento)
+    registrar_acao(request.user, "Inscrição em evento", f"Evento: {evento.nome}")
 
     if created:
         print("INSCRIÇÃO REALIZADA →", request.user.username, evento.nome)
@@ -25,11 +27,12 @@ def inscrever(request, evento_id):
     return redirect('listar_eventos')
 
 
+
 @login_required
 def cancelar_inscricao(request, evento_id):
     evento = get_object_or_404(Evento, id=evento_id)
     inscricao = Inscricao.objects.filter(usuario=request.user, evento=evento)
-
+    registrar_acao(request.user, "Cancelou inscrição", f"Evento: {evento.nome}")
     if inscricao.exists():
         inscricao.delete()
         print("INSCRIÇÃO CANCELADA →", request.user.username, evento.nome)
